@@ -1,4 +1,4 @@
-//!Arrays -> data structure, array is not primitive value -> it is mutable
+//*Arrays -> data structure, array is not primitive value -> it is mutable
 const friend1 = 'Sonya';
 const friend2 = 'Jonas';
 const friend3 = 'ELLE';
@@ -33,3 +33,34 @@ console.log(age1, age2, age3);
 
 const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length - 1])]
 console.log(ages);
+
+//*Array Methods/operations
+const friends1 = ['Sonya', 'Jonas', 'ELLE'];
+const newLength = friends1.push('Jay'); // add elements at the end of the array
+console.log(friends1);
+console.log(newLength)
+
+friends1.unshift('John'); // add elements at the beginning of the array
+console.log(friends1);
+
+//Remove elements
+friends1.pop(); // Last
+const popped = friends1.pop();
+console.log(popped);
+console.log(friends1);
+
+friends1.shift(); //remove the first element of the array
+console.log(friends1);
+
+// indexOf + includes
+console.log(friends1.indexOf('Sonya'));
+console.log(friends1.indexOf('Bob'));
+
+friends1.push(23);
+console.log(friends1.includes('Sonya'));
+console.log(friends1.includes('Bob'));
+console.log(friends1.includes('23')); //strict equality -> no type coercion
+
+if(friends1.includes('Sonya')) {
+  console.log('You have a friend called Sonya');
+}

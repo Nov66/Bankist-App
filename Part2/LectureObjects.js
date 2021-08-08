@@ -68,7 +68,7 @@ const liu = {
   }
 
 };
-
+liu.calcAge(); //* need to call the function first to use this.BMI
 console.log(liu.calcAge()); //* Dot notation
 // console.log(liu['calcAge'](liu.birthYear)); //* Bracket notation
 //* more efficient way compared to line 56 - 59, only called age once instead of every time

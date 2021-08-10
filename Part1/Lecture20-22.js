@@ -1,4 +1,4 @@
-/*
+/* TODO:
 // Type conversion
 const inputYear = '1991';
 console.log(Number(inputYear), inputYear);
@@ -22,40 +22,41 @@ console.log(n);
 // 5 falsy values: 0. '', undefined. null. NaN
 console.log(Boolean(0));
 console.log(Boolean(undefined));
-console.log(Boolean('Jonas'));
+console.log(Boolean("Jonas"));
 console.log(Boolean({}));
-console.log(Boolean(''));
+console.log(Boolean(""));
 
 const money = 100;
-if(money) {
-  console.log('Dont spend it all');
+if (money) {
+  console.log("Dont spend it all");
 } else {
-  console.log('You should get a job!')
+  console.log("You should get a job!");
 }
 
 let height = 0;
-if(height) {
-  console.log('YAY! Height is defined');
+if (height) {
+  console.log("YAY! Height is defined");
 } else {
-  console.log('Height is UNDEFINED');
+  console.log("Height is UNDEFINED");
 }
 
 // const age = '18'; prefer strict equal
 const age = 18;
-if(age === 18) console.log('You just became an adult (strict)')
-if(age == 18) console.log('You just became an adult (loose')
+if (age === 18) console.log("You just became an adult (strict)");
+if (age == 18) console.log("You just became an adult (loose");
 
-const favorite = Number(prompt('What is your favorite number?'))
-console.log(favorite)
+const favorite = Number(prompt("What is your favorite number?"));
+console.log(favorite);
 
-if(favorite === 23) { // '23' == 23 or 23 === 23
-  console.log('Cool! 23 is an amazing number')
-} else if(favorite === 7) {
-  console.log('7 is also a cool number')
-} else if(favorite === 9) {
-  console.log('9 is also a cool number')
+if (favorite === 23) {
+  // '23' == 23 or 23 === 23
+  console.log("Cool! 23 is an amazing number");
+} else if (favorite === 7) {
+  console.log("7 is also a cool number");
+} else if (favorite === 9) {
+  console.log("9 is also a cool number");
 } else {
-  console.log('Number is not 23 or 7 or 9')
+  console.log("Number is not 23 or 7 or 9");
 }
 
-if(favorite !== 23) console.log('why not 23')
+if (favorite !== 23) console.log("why not 23");

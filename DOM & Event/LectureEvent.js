@@ -8,6 +8,7 @@ this case is 'click' 2. Then tell the event what to do -> function)
 // NOTE: it is goof yo keep variable in a code
 const secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20; // HIGHLIGHT: state variable
+let highScore = 0; // NOTE: store the variable
 
 document.querySelector('.check').addEventListener('click', function () {
   // Specify what should happen
@@ -28,6 +29,12 @@ document.querySelector('.check').addEventListener('click', function () {
     //HIGHLIGHT: Manipulate CSS styles: always needs to specify String
     document.querySelector('body').style.backgroundColor = '#60b347'; // NOTE: if two words use camelCase
     document.querySelector('.number').style.width = '30rem';
+
+    // Highest Score
+    if (score > highScore) {
+      highScore = score;
+      document.querySelector('.highscore').textContent = highScore;
+    }
 
     //When guess is too high
   } else if (guess > secretNumber) {

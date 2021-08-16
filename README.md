@@ -217,7 +217,7 @@ Place where execution contexts get stacked on top of each other, to keep track o
 
   ```javascript
   if (year >= 1981 && year <= 1996>) {
-     const millenial = true;
+     const millennial = true;
      const food  = 'Avocado toast';
   } // if block, for loop block, etc.
 
@@ -225,3 +225,7 @@ Place where execution contexts get stacked on top of each other, to keep track o
   ```
 
 > **Scope of a variable**: Region of our code where a certain variable can be **accessed**
+
+- Variables can only **look up** in scope chain, not look down. (parent not child)
+- **let** and **const** are **block-scoped**, var is **function-scoped**
+  ![scopeChian](NotesImages/scopeChain.png)

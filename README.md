@@ -229,3 +229,21 @@ Place where execution contexts get stacked on top of each other, to keep track o
 - Variables can only **look up** in scope chain, not look down. (parent not child)
 - **let** and **const** are **block-scoped**, var is **function-scoped**
   ![scopeChian](NotesImages/scopeChain.png)
+
+> Scope Chain VS. CALL STACK
+
+- Scope Chain -> **Order** in which **functions are written** in the code -> has **nothing** to do with order in which functions were called
+
+- CALL STACK -> **Order** in which **functions were called**
+
+> Summary
+
+- Scoping asks the question “Where do variables live?” or “Where can we access a certain variable, and where not?”;
+- There are 3 types of scope in JavaScript: the global scope, scopes defined by functions, and scopes defined by blocks;
+- Only let and const variables are block-scoped. Variables declared with var end up in the closest function scope;
+- In JavaScript, we have lexical scoping, so the rules of where we can access variables are based on exactly where in the code functions and blocks are written;
+- Every scope always has access to all the variables from all its outer scopes. This is the scope chain!
+- When a variable is not in the current scope, the engine looks up in the scope chain until it finds the variable it’s looking for. This is called variable lookup;
+- The scope chain is a one-way street: a scope will never, ever have access to the variables of an inner scope;
+- The scope chain in a certain scope is equal to adding together all the variable environments of the all parent scopes;
+- The scope chain has nothing to do with the order in which functions were called. It does not affect the scope chain at all!

@@ -34,7 +34,8 @@ matilda.calcAge();
 const f = jonas.calcAge;
 // NOTE: undefined -> because it is now a regular function call, not attached to any object -> no owner
 // f();
-var firstName = 'Matilda';
+
+// var firstName = 'Matilda'; // Not using var
 
 const jonasArrow = {
   firstName: 'JONAS',
@@ -42,6 +43,22 @@ const jonasArrow = {
   calcAge: function () {
     console.log(this); // NOTE: this jonas object -> owner of the method
     console.log(2037 - this.year);
+
+    /* NOTE: solution 1 for function inside function -> this keyword
+    const self = this; // self or that
+    const isMillennial = function () {
+      // console.log(this); // NOTE: undefined
+      // console.log(this.year >= 1981 && this.year <= 1996);
+      console.log(self.year >= 1981 && self.year <= 1996);
+    };
+    */
+
+    // NOTE: solution 2 -> use arrow function -> inherit from parent scope because it does not own 'this' keyword
+    const isMillennial = () => {
+      console.log(this.year >= 1981 && this.year <= 1996);
+    };
+
+    isMillennial(); // NOTE: regular function call -> undefined
   },
 
   greet: () => {
@@ -50,4 +67,19 @@ const jonasArrow = {
   },
 };
 jonasArrow.greet();
-console.log(this.firstName); // undefined
+// console.log(this.firstName); // undefined
+jonasArrow.calcAge();
+
+// HIGHLIGHT: argument this keyword -> only in regular function
+const addExpr = function (a, b) {
+  console.log(arguments);
+  return a + b;
+};
+addExpr(2, 5);
+addExpr(2, 5, 8, 12);
+
+var addArrow = (a, b) => {
+  console.log(arguments);
+  return a + b;
+};
+addArrow(2, 5, 8);

@@ -11,6 +11,8 @@
   - [Execution Context](#execution-context)
   - [The CALL STACK](#the-call-stack)
   - [Scope and Scope Chain](#scope-and-scope-chain)
+  - [Hoisting & TDZ in JS](#hoisting--tdz-in-js)
+  - ['this' keyword](#this-keyword)
 
 ## JavaScript Fundamental
 
@@ -128,6 +130,8 @@ Environment in which a piece of JS is executed. Stores all the necessary informa
 4. When all functions are done executing, the engine will basically keep waiting callback function that to arrive
 
 > What is inside execution context:
+
+![executionContext](NotesImages/executionContext.png)
 
 1. Variable Environment
    1. let, const and var declarations
@@ -247,3 +251,38 @@ Place where execution contexts get stacked on top of each other, to keep track o
 - The scope chain is a one-way street: a scope will never, ever have access to the variables of an inner scope;
 - The scope chain in a certain scope is equal to adding together all the variable environments of the all parent scopes;
 - The scope chain has nothing to do with the order in which functions were called. It does not affect the scope chain at all!
+
+### Hoisting & TDZ in JS
+
+**Hoisting**: Makes some types of variables accessible/usable in the code before they are actually declared. “Variables lifted to the top of their scope”.
+
+-> **Behind the Scenes**: **Before execution**, code is scanned for variable declarations, and for each variable, a new property is created in the **variable environment object**.
+
+We can use Function declarations before they are declared because Hoisting
+![hoisting](NotesImages/Hoisting.png)
+
+> Reason:
+> v
+
+- Using functions before actual declaration; -> important for mutual recursion
+- var hoisting is just a byproduct.
+
+**Temporal Dead Zone (TDZ)**: each and every let and const variables get their own TDZ that starts at the beginning of the scope **until the line where it is defined**. The variables are only safe to use after TDZ.
+
+> Reason:
+
+- **Makes it easier to avoid and catch errors**: accessing variables before declaration is bad practice and should be avoided;
+- **Makes const variables actually work** -> const should never to be reassigned
+
+### 'this' keyword
+
+> **this keyword/variable**: Special variable that is created for every execution context (every function). Takes the value of (**points to**) the “owner” of the function in which the this keyword is used.
+
+> this is **NOT static** (not the same). It depends on **how the function is called**, and its value is only assigned when the function **is actually called**.
+
+> this does **NOT point to** the function itself, and also **NOT the its variable environment**!
+
+![thisKeyword](NotesImages/thisKeyword.png)
+
+1. Call function as a method -> as a function attacked to an object
+2. Arrow Functions do not get their own 'this' keyword

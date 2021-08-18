@@ -13,6 +13,7 @@
   - [Scope and Scope Chain](#scope-and-scope-chain)
   - [Hoisting & TDZ in JS](#hoisting--tdz-in-js)
   - ['this' keyword](#this-keyword)
+  - [Primitives VS. Objects](#primitives-vs-objects)
 
 ## JavaScript Fundamental
 
@@ -286,3 +287,18 @@ We can use Function declarations before they are declared because Hoisting
 
 1. Call function as a method -> as a function attacked to an object
 2. Arrow Functions do not get their own 'this' keyword
+
+### Primitives VS. Objects
+
+![PrimitiveVsObject](NotesImages/PrimitiveObjectiveTypes.png)
+
+**Primitives**: Number, String, Boolean, Undefined,Null, Symbol, BigInt -> **Primitive Types**
+
+- Stored in Execution context -> CALL STACK
+- Identifier actually points to the memory address
+
+**Objects**: Object literal, Arrays, Functions -> **Reference Types**
+
+![primitiveVsReference](NotesImages/PrimitivesVsReference.png)
+
+- When create a new object same as object, it points to the same object (memory address)

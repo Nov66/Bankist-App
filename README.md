@@ -14,6 +14,7 @@
   - [Hoisting & TDZ in JS](#hoisting--tdz-in-js)
   - ['this' keyword](#this-keyword)
   - [Primitives VS. Objects](#primitives-vs-objects)
+- [Data Structure](#data-structure)
 
 ## JavaScript Fundamental
 
@@ -302,3 +303,18 @@ We can use Function declarations before they are declared because Hoisting
 ![primitiveVsReference](NotesImages/PrimitivesVsReference.png)
 
 - When create a new object same as object, it points to the same object (memory address)
+
+## Data Structure
+
+When to use them
+![dataStructure](NotesImages/dataStructure.png)
+
+How to use them
+
+> Array VS. Sets
+
+![arrayVsSets](NotesImages/arrayVsSets.png)
+
+> Objects VS. Maps
+
+![objectsVsMaps](NotesImages/objectsVsMaps.png)

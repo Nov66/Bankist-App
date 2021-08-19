@@ -45,7 +45,10 @@ const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 // HIGHLIGHT: for-of LOOP -> can still use Continue and Break statement
 for (const item of menu) console.log(item);
 
-// NOTE: Normal Way
+/*
+HIGHLIGHT: entries method menu.entries() -> return INDEX number and ELEMENT itself
+ NOTE: Normal Way
+*/
 for (const item of menu.entries()) {
   console.log(`${item[0] + 1}: ${item[1]}`);
   // console.log(item);

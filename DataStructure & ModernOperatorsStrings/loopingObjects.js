@@ -50,7 +50,7 @@ console.log(openStr);
 // HIGHLIGHT: Looping Property Values (VALUES)
 const values = Object.values(openingHours);
 console.log(values);
-// NOTE: Object.entries() -> return KEYS and VALUES -> Loop Entire Object
+// NOTE: Object.entries() -> return KEYS and VALUES -> Loop Entire Object -> Iterable
 const entries = Object.entries(openingHours);
 console.log(entries);
 

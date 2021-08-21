@@ -15,6 +15,9 @@
   - ['this' keyword](#this-keyword)
   - [Primitives VS. Objects](#primitives-vs-objects)
 - [Data Structure](#data-structure)
+- [Close Look at Functions](#close-look-at-functions)
+  - [First-class Functions (concept)](#first-class-functions-concept)
+  - [High-order Functions (practice)](#high-order-functions-practice)
 
 ## JavaScript Fundamental
 
@@ -318,3 +321,44 @@ How to use them
 > Objects VS. Maps
 
 ![objectsVsMaps](NotesImages/objectsVsMaps.png)
+
+## Close Look at Functions
+
+- JS treats functions as **First-class Citizens**
+- This means that functions are **simply values**
+- Functions are just another **'type' of object**
+
+### First-class Functions (concept)
+
+1. Store functions in **variables** or **properties**
+
+   ![storeFunction](NotesImages/storeFunction.png)
+
+2. Pass functions as arguments to **OTHER functions**
+
+   ![passFunction](NotesImages/passFunction.png)
+
+3. Return functions **FROM functions**
+4. **Call methods** on functions
+
+   ![callMethod](NotesImages/callMethod.png)
+
+### High-order Functions (practice)
+
+- A function that **receives** another function as an argument, that **returns** a new functions or **Both**
+
+1. Function that **receives** another function
+
+   ![functionReceive](NotesImages/functionReceiveFunction.png)
+
+   - addEventListener -> High-order function because of -> Receive another function as **input**
+   - A function **passed in** is the **Callback function** -> because it will be **Called later** by the **high-order function**
+   - In this case, addEventListener will Call greet later as soon as the click event happens.
+
+2. Function that **returns** new function
+
+   ![functionReturn](NotesImages/functionReturnFunction.png)
+
+   - function count() is High-order function -> because it **Returned** a new function
+
+- This is only possible because of first-class functions

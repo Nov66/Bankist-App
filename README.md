@@ -18,6 +18,7 @@
 - [Close Look at Functions](#close-look-at-functions)
   - [First-class Functions (concept)](#first-class-functions-concept)
   - [High-order Functions (practice)](#high-order-functions-practice)
+  - [Closure](#closure)
 
 ## JavaScript Fundamental
 
@@ -357,8 +358,42 @@ How to use them
 
 2. Function that **returns** new function
 
-   ![functionReturn](NotesImages/functionReturnFunction.png)
+![functionReturn](NotesImages/functionReturnFunction.png)
 
-   - function count() is High-order function -> because it **Returned** a new function
+- function count() is High-order function -> because it **Returned** a new function
 
 - This is only possible because of first-class functions
+
+### Closure
+
+```javascript
+const secureBooking = function () {
+  let passengerCount = 0;
+
+  return function () {
+    passengerCount++;
+    console.log(`${passengerCount} passenger`);
+  };
+};
+
+const booker = secureBooking();
+```
+
+![createClosure](NotesImages/createClosure.png)
+
+> How to access passengerCount when it is not in the Scope Chain
+
+- Any function always has access to the variable environment of the Execution Context in which the function was created
+- booker was born in a Execution Context of secureBooking which was pop off the Stack previously
+
+1. A function has access to the variable environment (VE) of the execution context in which it was created
+2. **Closure**: VE attached to the function, exactly as it was at the time and place the function was created
+
+![closureUnderstanding](NotesImages/closureUnderstanding.png)
+
+- Closure has **priority** over Scope Chain
+
+**Summary**
+![closureSummary](NotesImages/closureSummary.png)
+
+- Closed-over Variable Environment of the execution context

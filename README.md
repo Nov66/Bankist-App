@@ -19,6 +19,11 @@
   - [First-class Functions (concept)](#first-class-functions-concept)
   - [High-order Functions (practice)](#high-order-functions-practice)
   - [Closure](#closure)
+- [Working with Arrays](#working-with-arrays)
+  - [Data Transformations with Map, Filter, Reduce](#data-transformations-with-map-filter-reduce)
+    - [Map](#map)
+  - [Filter](#filter)
+  - [Reduce](#reduce)
 
 ## JavaScript Fundamental
 
@@ -397,3 +402,31 @@ const booker = secureBooking();
 ![closureSummary](NotesImages/closureSummary.png)
 
 - Closed-over Variable Environment of the execution context
+
+## Working with Arrays
+
+### Data Transformations with Map, Filter, Reduce
+
+#### Map
+
+- Similarly to **forEach method**, but **create a brand NEW array** based on the original array
+- Loop over the array, and in each iteration -> **apply a CALLBACK function** that we specify in our code to the current array element
+
+![transformationMap](NotesImages/transformationMap.png)
+
+- Useful than forEach method because forEach only allows us to do some works with each array elements
+
+### Filter
+
+- Use to Filter elements in the original array which **satisfies certain conditions**
+- Elements for which the condition is true will be included in a **NEW array** that filter method returns
+- All other elements will get filter out
+
+![transformationFilter](NotesImages/transformationFilter.png)
+
+### Reduce
+
+- Use to boil down all the elements of the original array into **one single value**
+- Snowball Effect
+
+![transformationReduce](NotesImages/transformationReduce.png)

@@ -60,7 +60,7 @@ const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
-// HIGHLIGHT: Creating DOM Elements
+// HIGHLIGHT: Display all the Movements Activities -> Creating DOM Elements
 const displayMovements = function (movements) {
   // NOTE: First: Empty the entire Container before adding
   containerMovements.innerHTML = '';
@@ -86,8 +86,16 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+// HIGHLIGHT: Add all the Movements activities into Balance -> Using Reduce Method
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+calcDisplayBalance(account1.movements);
+
 /* HIGHLIGHT: Computing username (take only the first letter of the each name)
 - 'Steven Thomas Williams' -> username: stw
+- Using Map method
 */
 // NOTE: we do not return anything in this Function -> produce Side Effect
 const createUsernames = accs => {

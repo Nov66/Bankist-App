@@ -85,3 +85,25 @@ const displayMovements = function (movements) {
   });
 };
 displayMovements(account1.movements);
+
+/* HIGHLIGHT: Computing username (take only the first letter of the each name)
+- 'Steven Thomas Williams' -> username: stw
+*/
+// NOTE: we do not return anything in this Function -> produce Side Effect
+const createUsernames = accs => {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(word => word[0])
+      .join('');
+  });
+};
+/* NOTE: 
+console.log(createUsernames('Steven Thomas Williams')); // stw
+Since we do NOT want to create a new array in this situation
+- We just want to change (Mutate) the username in the original object -> Side effect
+- Use forEach method
+*/
+createUsernames(accounts);
+console.log(accounts);

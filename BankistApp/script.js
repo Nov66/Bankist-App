@@ -59,3 +59,29 @@ const inputTransferAmount = document.querySelector('.form__input--amount');
 const inputLoanAmount = document.querySelector('.form__input--loan-amount');
 const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
+
+// HIGHLIGHT: Creating DOM Elements
+const displayMovements = function (movements) {
+  // NOTE: First: Empty the entire Container before adding
+  containerMovements.innerHTML = '';
+
+  movements.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal'; //.textContent = 0
+
+    const html = `
+      <div class="movements__row">
+          <div class="movements__type movements__type--${type}">
+            ${i + 1} ${type}
+          </div>
+          <div class="movements__value">$ ${mov}</div>
+      </div>
+    `;
+    /* NOTE: Insert New HTML inside the containerMovements
+    - First parameter is the Position you want to insert (beforebegin, afterbegin, beforeend, afterend)
+    - Second parameter is the String (of HTML) you want to insert
+    - Here use afterbegin instead of beforeend because it will append before the elements we have
+    */
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
+displayMovements(account1.movements);

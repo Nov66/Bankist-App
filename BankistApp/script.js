@@ -84,30 +84,30 @@ const displayMovements = function (movements) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
-displayMovements(account1.movements);
+// displayMovements(account1.movements);
 
 // HIGHLIGHT: Add all the Movements activities into Balance -> Using Reduce Method
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance} EUR`;
+  labelBalance.textContent = `${balance} €`;
 };
-calcDisplayBalance(account1.movements);
+// calcDisplayBalance(account1.movements);
 
 // HIGHLIGHT: Calculate the Summary of the Account (In, Out, Interest)
-const calcDisplaySummary = function (movements) {
-  const incomes = movements
+const calcDisplaySummary = function (acc) {
+  const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumIn.textContent = `${incomes}€`;
 
-  const out = movements
+  const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumOut.textContent = `${Math.abs(out)}€`;
 
-  const interest = movements
+  const interest = acc.movements
     .filter(mov => mov > 0)
-    .map(deposit => (deposit * 1.2) / 100)
+    .map(deposit => (deposit * acc.interestRate) / 100)
     .filter((int, i, arr) => {
       console.log(arr);
       return int >= 1;
@@ -115,7 +115,7 @@ const calcDisplaySummary = function (movements) {
     .reduce((acc, int) => acc + int, 0);
   labelSumInterest.textContent = `${interest}€`;
 };
-calcDisplaySummary(account1.movements);
+// calcDisplaySummary(account1.movements);
 
 /* HIGHLIGHT: Computing username (take only the first letter of the each name)
 - 'Steven Thomas Williams' -> username: stw
@@ -139,3 +139,44 @@ Since we do NOT want to create a new array in this situation
 */
 createUsernames(accounts);
 console.log(accounts);
+
+//HIGHLIGHT: Implementing LOGIN function (Event Handler)
+let currentAccount; // NOTE: Declare the variable in Global to use in the other fields
+
+btnLogin.addEventListener('click', function (e) {
+  /* console.log('LOGIN'); 
+  NOTE: Flash -> because this is button in the Form Element -> By default: Reload
+  - We need to add function (e) -> preventDefault
+  - Prevent this Form from submitting
+  - Form element automatically submitted when press Enter button
+  */
+  e.preventDefault(); // Prevent this Form from submitting
+  // console.log('LOGIN');
+
+  // NOTE: Find Username that User Inputted
+  currentAccount = accounts.find(
+    acc => acc.username === inputLoginUsername.value
+  );
+  console.log(currentAccount);
+
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    // Display UI and Message
+    labelWelcome.textContent = `Welcome back, ${
+      currentAccount.owner.split(' ')[0]
+    }`;
+    containerApp.style.opacity = 100;
+
+    // Clear input fields
+    inputLoginPin.value = inputLoginUsername.value = '';
+    inputLoginPin.blur();
+
+    // Display Movements
+    displayMovements(currentAccount.movements);
+
+    // Display Balance
+    calcDisplayBalance(currentAccount.movements);
+
+    // Display Summary
+    calcDisplaySummary(currentAccount);
+  }
+});

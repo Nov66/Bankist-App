@@ -87,9 +87,9 @@ const displayMovements = function (movements) {
 // displayMovements(account1.movements);
 
 // HIGHLIGHT: Add all the Movements activities into Balance -> Using Reduce Method
-const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance} €`;
+const calcDisplayBalance = function (acc) {
+  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${acc.balance} €`;
 };
 // calcDisplayBalance(account1.movements);
 
@@ -140,6 +140,18 @@ Since we do NOT want to create a new array in this situation
 createUsernames(accounts);
 console.log(accounts);
 
+// HIGHLIGHT: Update UI Function
+const updateUI = function (acc) {
+  // Display Movements
+  displayMovements(acc.movements);
+
+  // Display Balance
+  calcDisplayBalance(acc);
+
+  // Display Summary
+  calcDisplaySummary(acc);
+};
+
 //HIGHLIGHT: Implementing LOGIN function (Event Handler)
 let currentAccount; // NOTE: Declare the variable in Global to use in the other fields
 
@@ -170,13 +182,34 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginPin.value = inputLoginUsername.value = '';
     inputLoginPin.blur();
 
-    // Display Movements
-    displayMovements(currentAccount.movements);
+    // Update UI
+    updateUI(currentAccount);
+  }
+});
 
-    // Display Balance
-    calcDisplayBalance(currentAccount.movements);
+// HIGHLIGHT: Implementing Transfer Function
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiverAccount = accounts.find(
+    acc => acc.username === inputTransferTo.value
+  );
+  console.log(amount, receiverAccount);
+  inputTransferAmount.value = inputTransferTo.value = '';
 
-    // Display Summary
-    calcDisplaySummary(currentAccount);
+  if (
+    amount > 0 &&
+    receiverAccount &&
+    currentAccount.balance >= amount &&
+    receiverAccount?.username !== currentAccount.username
+  ) {
+    // console.log('transfer valid');
+
+    // Doing the Transfer
+    currentAccount.movements.push(-amount);
+    receiverAccount.movements.push(amount);
+
+    // Update UI
+    updateUI(currentAccount);
   }
 });

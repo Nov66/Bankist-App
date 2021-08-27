@@ -214,7 +214,23 @@ btnTransfer.addEventListener('click', function (e) {
   }
 });
 
-// HIGHLIGHT: Close Account by using Splice and FindIndex method
+// HIGHLIGHT: Implementing Request Loan Function
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputLoanAmount.value);
+
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    // Add Movement
+    currentAccount.movements.push(amount);
+
+    // Update UI
+    updateUI(currentAccount);
+
+    inputLoanAmount.value = '';
+  }
+});
+
+// HIGHLIGHT: Implementing Close Account Function by using Splice and FindIndex method
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
   // console.log('Delete');

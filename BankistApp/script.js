@@ -61,13 +61,15 @@ const inputCloseUsername = document.querySelector('.form__input--user');
 const inputClosePin = document.querySelector('.form__input--pin');
 
 // HIGHLIGHT: Display all the Movements Activities -> Creating DOM Elements
-const displayMovements = function (movements) {
+const displayMovements = function (movements, sort = false) {
   // NOTE: First: Empty the entire Container before adding
-  containerMovements.innerHTML = '';
+  containerMovements.innerHTML = ''; //.textContent = 0
 
-  movements.forEach(function (mov, i) {
-    const type = mov > 0 ? 'deposit' : 'withdrawal'; //.textContent = 0
+  // NOTE: using Slice Method to create shallow copy of an Array
+  const movs = sort ? movements.slice().sort((a, b) => a - b) : movements;
 
+  movs.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
     const html = `
       <div class="movements__row">
           <div class="movements__type movements__type--${type}">
@@ -250,4 +252,13 @@ btnClose.addEventListener('click', function (e) {
     labelWelcome.textContent = 'Log in to get started';
     containerApp.style.opacity = 0;
   }
+});
+
+//HIGHLIGHT: Sorting Button used to sorting the Movements (State variable)
+// NOTE: click sorting to sort movements then click to back to normal -> State variable
+let sorted = false;
+btnSort.addEventListener('click', function (e) {
+  e.preventDefault();
+  displayMovements(currentAccount.movements, !sorted);
+  sorted = !sorted;
 });

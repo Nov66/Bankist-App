@@ -100,11 +100,16 @@ const convertTitleCase = function (title) {
   const titleCase = title
     .toLowerCase()
     .split(' ')
+    .filter(word => word) // NOTE: Filter method only return true value -> empty string is false value
     .map(word => (exceptions.includes(word) ? word : capitalize(word)))
     .join(' ');
   return titleCase;
 };
 
-console.log(convertTitleCase('this is a nice title'));
-console.log(convertTitleCase('this is a LONG title but not too long'));
-console.log(convertTitleCase('and here is another title with an EXAMPLE'));
+console.log(convertTitleCase('    this is a nice     title'));
+console.log(
+  convertTitleCase('      this is a LONG     title but     not too long')
+);
+console.log(
+  convertTitleCase('       and here is     another title with an EXAMPLE')
+);

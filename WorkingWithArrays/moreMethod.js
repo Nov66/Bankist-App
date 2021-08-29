@@ -37,11 +37,12 @@ console.log(y); // [1, 1, 1, 1, 1, 1, 1]
 const z = Array.from({ length: 7 }, (_, i) => i + 1);
 console.log(z);
 
-// const randomDice = Array.from(
-//   { length: 100 },
-//   (cur, i) => Math.trunc(Math.random * 6) + 1
-// );
-// console.log(randomDice);
+// Exercise: 100 random Dice Roll
+const randomDice = Array.from(
+  { length: 100 },
+  (cur, i) => Math.trunc(Math.random() * 6) + 1
+);
+console.log(randomDice);
 
 /* HIGHLIGHT: Real case -> Array-like structure (maps, sets, querySelectAll(node lists))
 NOTE:

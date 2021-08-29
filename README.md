@@ -24,6 +24,7 @@
     - [Map](#map)
   - [Filter](#filter)
   - [Reduce](#reduce)
+  - [Summary Array Method](#summary-array-method)
 
 ## JavaScript Fundamental
 
@@ -430,3 +431,7 @@ const booker = secureBooking();
 - Snowball Effect
 
 ![transformationReduce](NotesImages/transformationReduce.png)
+
+### Summary Array Method
+
+![arrayMethodSummary](NotesImages/arrayMethodSummary.png)

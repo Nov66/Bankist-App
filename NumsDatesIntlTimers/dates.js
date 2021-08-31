@@ -78,3 +78,19 @@ console.log(Date.now());
 // NOTE: Set Dates
 future.setFullYear(2040); // Mon Nov 19 2040 15:23:00 GMT+1100
 console.log(future);
+
+console.log('---- Operations with Dates ----');
+/* HIGHLIGHT: Operations with Dates
+- Can use moment.js library
+ */
+const future2 = new Date(2037, 10, 19, 15, 23);
+console.log(+future2);
+
+const calcDaysPassed = (date1, date2) =>
+  Math.round(Math.abs(date2 - date1) / (1000 * 60 * 60 * 24));
+
+const days1 = calcDaysPassed(
+  new Date(2037, 3, 4),
+  new Date(2037, 3, 14, 10, 8)
+);
+console.log(days1); // 10 days

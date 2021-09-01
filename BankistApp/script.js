@@ -246,13 +246,44 @@ const updateUI = function (acc) {
   calcDisplaySummary(acc);
 };
 
-//HIGHLIGHT: Implementing LOGIN function (Event Handler)
-let currentAccount; // NOTE: Declare the variable in Global to use in the other fields
+/* HIGHLIGHT: LOGOUT timer
+NOTE:
+- CALLBACK function in setInterval is called after one second
+- Export CALLBACK function into Separate function -> Then Call it Immediately
+*/
+const startLogOutTimer = function () {
+  const tick = function () {
+    const min = String(Math.trunc(time / 60)).padStart(2, 0);
+    const second = String(time % 60).padStart(2, 0);
+    // In Each call, print the remaining time to UI
+    labelTimer.textContent = `${min}:${second}`;
 
-// TODO: Fake always Logged In
+    // When 0 second, Stop timer and logout User
+    if (time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = `Log in to get started`;
+      containerApp.style.opacity = 0;
+    }
+
+    // Decrease 1 Second
+    time--;
+  };
+  // Set Time to 5 minutes
+  let time = 120;
+  // Call the timer every second
+  tick();
+  const timer = setInterval(tick, 1000);
+  return timer; // NOTE: Return the timer to reuse the timer variable
+};
+
+//HIGHLIGHT: Implementing LOGIN function (Event Handler)
+let currentAccount, timer; // NOTE: Declare the variable in Global to use in the other fields
+
+/*TODO: Fake always Logged In
 currentAccount = account1;
 updateUI(currentAccount);
 containerApp.style.opacity = 100;
+*/
 
 btnLogin.addEventListener('click', function (e) {
   /* console.log('LOGIN'); 
@@ -311,6 +342,10 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginPin.value = inputLoginUsername.value = '';
     inputLoginPin.blur();
 
+    // HIGHLIGHT: LogOut Timer
+    if (timer) clearInterval(timer);
+    timer = startLogOutTimer();
+
     // Update UI
     updateUI(currentAccount);
   }
@@ -344,6 +379,10 @@ btnTransfer.addEventListener('click', function (e) {
 
     // Update UI
     updateUI(currentAccount);
+
+    // HIGHLIGHT: Reset Timer
+    clearInterval(timer);
+    timer = startLogOutTimer();
   }
 });
 
@@ -365,6 +404,10 @@ btnLoan.addEventListener('click', function (e) {
 
       // Update UI
       updateUI(currentAccount);
+
+      // HIGHLIGHT: Reset Timer
+      clearInterval(timer);
+      timer = startLogOutTimer();
 
       inputLoanAmount.value = '';
     }, 2500);

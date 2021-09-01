@@ -133,6 +133,14 @@ const formatMovementDate = function (date, locale) {
   }
 };
 
+// HIGHLIGHT: Internationalization Numbers of Movement -> Reuseable function
+const formatCur = function (value, locale, currency) {
+  return new Intl.NumberFormat(locale, {
+    style: 'currency',
+    currency: currency,
+  }).format(value);
+};
+
 // HIGHLIGHT: Display all the Movements Activities -> Creating DOM Elements
 const displayMovements = function (acc, sort = false) {
   // NOTE: First: Empty the entire Container before adding
@@ -149,15 +157,18 @@ const displayMovements = function (acc, sort = false) {
     const date = new Date(acc.movementsDates[i]);
     const displayDate = formatMovementDate(date, acc.locale);
 
+    // Implement Internationalization Function
+    const formattedMovements = formatCur(mov, acc.locale, acc.currency);
+
     const html = `
       <div class="movements__row">
           <div class="movements__type movements__type--${type}">
             ${i + 1} ${type}
           </div>
           <div class="movements__date">${displayDate}</div>
-          <div class="movements__value">${mov.toFixed(2)}€</div>
+          <div class="movements__value">${formattedMovements}</div>
       </div>
-    `;
+    `; // `${mov.toFixed(2)}€`
     /* NOTE: Insert New HTML inside the containerMovements
     - First parameter is the Position you want to insert (beforebegin, afterbegin, beforeend, afterend)
     - Second parameter is the String (of HTML) you want to insert
@@ -171,7 +182,8 @@ const displayMovements = function (acc, sort = false) {
 // HIGHLIGHT: Add all the Movements activities into Balance -> Using Reduce Method
 const calcDisplayBalance = function (acc) {
   acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${acc.balance.toFixed(2)} €`;
+
+  labelBalance.textContent = formatCur(acc.balance, acc.locale, acc.currency); // `${acc.balance.toFixed(2)}€`
 };
 // calcDisplayBalance(account1.movements);
 
@@ -180,12 +192,12 @@ const calcDisplaySummary = function (acc) {
   const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumIn.textContent = `${incomes.toFixed(2)}€`;
+  labelSumIn.textContent = formatCur(incomes, acc.locale, acc.currency); // `${incomes.toFixed(2)}€`
 
   const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
-  labelSumOut.textContent = `${Math.abs(out).toFixed(2)}€`;
+  labelSumOut.textContent = formatCur(out, acc.locale, acc.currency); // `${out.toFixed(2)}€`
 
   const interest = acc.movements
     .filter(mov => mov > 0)
@@ -195,7 +207,7 @@ const calcDisplaySummary = function (acc) {
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
-  labelSumInterest.textContent = `${interest.toFixed(2)}€`;
+  labelSumInterest.textContent = formatCur(interest, acc.locale, acc.currency); // `${interest.toFixed(2)}€`
 };
 // calcDisplaySummary(account1.movements);
 

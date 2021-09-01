@@ -41,3 +41,48 @@ console.log(
   navigator.language,
   new Intl.NumberFormat(navigator.language, options2).format(num) // en-AU 3,884,764.23
 );
+
+/* HIGHLIGHT: Timer
+NOTE:
+- setTimeout -> Receive CALLBACK function (Asynchronous Javascript)
+- setInterval
+*/
+/* NOTE: setTimeout -> CALLBACK function ONLY executed once
+setTimeout(() => console.log('Here is your Pizza'), 3000);
+console.log('Waiting'); // NOTE: Asynchronous Javascript
+*/
+
+/* NOTE: Pass Arguments
+setTimeout(
+  (ing1, ing2) => console.log(`Here is your Pizza with ${ing2}`),
+  3000,
+  'olives',
+  'spinach'
+);
+console.log('Waiting'); Here is your Pizza with spinach
+*/
+
+// NOTE: Cancel TimeOut
+const ingredients = ['olives', 'spinach'];
+const pizzaTimer = setTimeout(
+  (ing1, ing2) => console.log(`Here is your Pizza with ${ing1} and ${ing2}`),
+  3000,
+  ...ingredients
+);
+console.log('Waiting...');
+
+if (ingredients.includes('spinach')) clearTimeout(pizzaTimer);
+
+// NOTE: setInterval -> Run Function over and over again (every 5 minutes...)
+setInterval(function () {
+  const now = new Date();
+  const hour = now.getHours();
+  const minute = now.getMinutes();
+  const second = now.getSeconds();
+  // console.log(`${hour}:${minute}:${second}`);
+  console.log(
+    new Intl.DateTimeFormat(navigator.language, { timeStyle: 'medium' }).format(
+      now
+    )
+  );
+}, 1000);

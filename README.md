@@ -28,6 +28,7 @@
 - [Advanced DOM and Events](#advanced-dom-and-events)
   - [Types of DOM Objects](#types-of-dom-objects)
     - [Inheritance](#inheritance)
+  - [Smooth Scrolling](#smooth-scrolling)
 
 ## JavaScript Fundamental
 
@@ -460,3 +461,7 @@ const booker = secureBooking();
 
 - Inheritance means all the child types will also get access to the methods and properties of all their parent Node types
 - _Example_: Any HTMLElement will have access to .addEventListener(), .cloneNode() or .closest() methods.
+
+### Smooth Scrolling
+
+![smoothScrolling](NotesImages/smoothScrolling.png)

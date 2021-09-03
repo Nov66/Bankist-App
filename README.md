@@ -25,6 +25,9 @@
   - [Filter](#filter)
   - [Reduce](#reduce)
   - [Summary Array Method](#summary-array-method)
+- [Advanced DOM and Events](#advanced-dom-and-events)
+  - [Types of DOM Objects](#types-of-dom-objects)
+    - [Inheritance](#inheritance)
 
 ## JavaScript Fundamental
 
@@ -435,3 +438,25 @@ const booker = secureBooking();
 ### Summary Array Method
 
 ![arrayMethodSummary](NotesImages/arrayMethodSummary.png)
+
+## Advanced DOM and Events
+
+- DOM is the **Interface** between JS code and Browser
+- Allows us to make JavaScript interact with the browser;
+- We can write JavaScript to create, modify and delete HTML elements; set styles, classes and attributes; and listen and respond to events;
+- DOM tree is generated from an HTML document, which we can then interact with;
+- DOM is a very complex API (Application Programming Interface) that contains lots of methods and properties to interact with the DOM tree
+
+```javascript
+.querySelector() / .addEventListener() / .createElement() /
+.innerHTML / .textContent / .children / etc...
+```
+
+### Types of DOM Objects
+
+![DOMAPIBehindScenes](NotesImages/DOMAPI.png)
+
+#### Inheritance
+
+- Inheritance means all the child types will also get access to the methods and properties of all their parent Node types
+- _Example_: Any HTMLElement will have access to .addEventListener(), .cloneNode() or .closest() methods.

@@ -9,13 +9,13 @@ const randomInt = (min, max) =>
   Math.floor(Math.random() * (max - min + 1) + min);
 const randomColor = () =>
   `rgb(${randomInt(0, 255)}, ${randomInt(0, 255)}, ${randomInt(0, 255)})`;
-console.log(randomColor(0, 255));
+console.log(randomColor());
 
 document.querySelector('.nav__link').addEventListener('click', function (e) {
   /* NOTE: 
   - 'this' keyword in Event Handler -> points to the Element on which that event handler attached
     -> document.querySelector('.nav__link')
-  - e.target -> where the Events originated, where the event first happened, NOT the element on which handler attached
+  - e.target -> what we clicked, where the Events originated, where the event first happened, NOT the element on which handler attached
   - e.currentTarget -> Current element on which handler attached
   */
   this.style.backgroundColor = randomColor();

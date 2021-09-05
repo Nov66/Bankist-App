@@ -29,6 +29,8 @@
   - [Types of DOM Objects](#types-of-dom-objects)
     - [Inheritance](#inheritance)
   - [Smooth Scrolling](#smooth-scrolling)
+  - [Event Propagation](#event-propagation)
+    - [Bubbling and Capturing](#bubbling-and-capturing)
 
 ## JavaScript Fundamental
 
@@ -465,3 +467,10 @@ const booker = secureBooking();
 ### Smooth Scrolling
 
 ![smoothScrolling](NotesImages/smoothScrolling.png)
+
+### Event Propagation
+
+#### Bubbling and Capturing
+
+![bubbling](NotesImages/bubbling.png)
+![bubbling2](NotesImages/bubblingJS.png)

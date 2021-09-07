@@ -31,6 +31,7 @@
   - [Smooth Scrolling](#smooth-scrolling)
   - [Event Propagation](#event-propagation)
     - [Bubbling and Capturing](#bubbling-and-capturing)
+  - [Intersection Observer API (Sticky Navigation)](#intersection-observer-api-sticky-navigation)
 
 ## JavaScript Fundamental
 
@@ -474,3 +475,42 @@ const booker = secureBooking();
 
 ![bubbling](NotesImages/bubbling.png)
 ![bubbling2](NotesImages/bubblingJS.png)
+
+### Intersection Observer API (Sticky Navigation)
+
+First we created an observer which receives two arguments
+
+1. a callback function
+
+2. object (options of object)
+
+```javascript
+const observer = new IntersectionObserver(callback, options);
+```
+
+Now, this observer will observe a target element _i.e. section1_ in our case
+
+```javascript
+observer.observe(section1);
+```
+
+Now, we need an intersecting element i.e. root property, which is inside the options object.
+
+```javascript
+const options = {
+  root: null, // default case or viewport
+  threshold: 0.2,
+};
+```
+
+Now, this **threshold** property holds the **array value** even it has single value. Here, 0.2 means when the target element (section1) is **20% visible on our viewport**(intersecting element), call this callback function. That's why **isIntersecting value** is true (isIntersecting: true).
+
+If target element is (section1) less than 20% visible in our viewport (intersecting element), the value of isIntersecting value will get false (insIntersecting: false)
+
+```javascript
+const callback = function (entries, observer) {
+  entries.forEach(entry => {
+    console.log(entry);
+  });
+};
+```

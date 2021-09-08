@@ -32,6 +32,7 @@
   - [Event Propagation](#event-propagation)
     - [Bubbling and Capturing](#bubbling-and-capturing)
   - [Intersection Observer API (Sticky Navigation)](#intersection-observer-api-sticky-navigation)
+  - [Lifecycle DOM Events](#lifecycle-dom-events)
 
 ## JavaScript Fundamental
 
@@ -514,3 +515,27 @@ const callback = function (entries, observer) {
   });
 };
 ```
+
+### Lifecycle DOM Events
+
+- Lifecycle means from the moment that the page is first accessed until User leave it
+
+1. DOM Content Loaded
+
+   - Fired as soon as the HTML is completely parsed -> which means HTML has been downloaded and converted to the DOM Tree
+
+2. Load Event
+
+   - Fired by the **Window**. As soon as not only the HTML is parsed, but also all the images and external resources like CSS files are also loaded.
+
+   - When the complete page has finished loading is when this event gets fired
+
+3. Before Unload Event
+
+   - Fired by **Window**.
+
+   - Created **immediately** **before** a user is about to **leave a page**.
+
+   - After clicking close button in the browser tab.
+
+   - We can basically use this event to ask users if they are 100% sure that they want to leave the page.

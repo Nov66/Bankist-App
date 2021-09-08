@@ -33,6 +33,7 @@
     - [Bubbling and Capturing](#bubbling-and-capturing)
   - [Intersection Observer API (Sticky Navigation)](#intersection-observer-api-sticky-navigation)
   - [Lifecycle DOM Events](#lifecycle-dom-events)
+  - [Efficient Script Loading: Defer and Async](#efficient-script-loading-defer-and-async)
 
 ## JavaScript Fundamental
 
@@ -539,3 +540,9 @@ const callback = function (entries, observer) {
    - After clicking close button in the browser tab.
 
    - We can basically use this event to ask users if they are 100% sure that they want to leave the page.
+
+### Efficient Script Loading: Defer and Async
+
+![deferAsync](NotesImages/deferAsync.png)
+
+![deferVsAsync](NotesImages/deferVSasync.png)

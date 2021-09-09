@@ -39,7 +39,9 @@ But it is what's gonna be Used as the prototype of all the Objects that are crea
 不是Person的原型。但相反，它将被用作使用 Person 构造函数创建的所有对象的原型。
 - 可以理解为Person.prototypeLinkedObjects
 */
-console.log(jonas.__proto__);
+console.log(jonas.__proto__); // __proto__ -> depreciated, use Object.getPrototypeOf()
+console.log(Person.prototype);
+console.log(Object.getPrototypeOf(jonas));
 console.log(jonas.__proto__ === Person.prototype); // true
 console.log(Person.prototype.isPrototypeOf(jonas)); // true
 console.log(Person.prototype.isPrototypeOf(matilda)); // true

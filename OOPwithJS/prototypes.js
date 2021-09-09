@@ -58,3 +58,39 @@ console.log(jonas.species, matilda.species);
 
 console.log(jonas.hasOwnProperty('firstName')); // true
 console.log(jonas.hasOwnProperty('species')); // false
+
+console.log(jonas.__proto__); // Person.prototype
+console.log(jonas.__proto__.__proto__); // Object.prototype
+console.log(jonas.__proto__.__proto__.__proto__); // null
+console.dir(Person.prototype.constructor); // Constructor property Points back to Person
+
+/* HIGHLIGHT: Working with Array
+- Each array does NOT contains these methods
+= But each array will Inherit these methods from its Prototype
+- The prototype property of the constructor is gonna be the prototype of all the objects created by that constructor.
+- All methods live in the prototype property of the array constructor. 
+*/
+const arr = [3, 6, 6, 5, 6, 9, 9]; // new Array === []
+console.log(arr.__proto__); // All the methods of Arrays
+console.log(arr.__proto__ === Array.prototype); // true
+
+console.log(arr.__proto__.__proto__);
+
+/* NOTE:
+Added a new method to the prototype property of the array constructor.
+- Now all arrays will inherit this method (unique)
+- But NOT use this to add methods
+ */
+Array.prototype.unique = function () {
+  return [...new Set(this)];
+};
+console.log(arr.unique()); // [3, 6, 5, 9]
+
+const h1 = document.querySelector('h1'); // HTMLHeadingElement -> HTMLElement -> Element -> Node -> Event Target -> Object
+console.dir(x => x + 1);
+
+const arr1 = [1, 2, 3];
+
+console.log(arr1.__proto__.__proto__ === Object.prototype); // true
+console.log(arr1.__proto__ === Array.prototype); // true
+console.log(Array.__proto__.__proto__ === Object.prototype); // true

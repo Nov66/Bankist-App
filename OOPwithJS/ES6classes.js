@@ -21,6 +21,7 @@ class PersonCl {
   - Methods write outside the Constructor will be on the Prototype of the Objects
   - NOT on the objects themselves 
   - Methods will be added to .prototype property
+  - Instance Methods
   */
   calcAge() {
     console.log(2037 - this.birthYear);

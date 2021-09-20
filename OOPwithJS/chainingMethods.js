@@ -1,6 +1,6 @@
 'use strict';
 /* HIGHLIGHT: Chaining Methods
-- Return the object itself ar the end od a methods that we want to be chainable
+- Return the object itself at the end of a methods that we want to be chainable
 */
 class Account {
   // 1. Public Fields (instances)
